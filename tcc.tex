@@ -1,0 +1,128 @@
+
+\documentclass[
+	12pt,				
+	oneside,
+	a4paper,
+	english,
+	brazil,
+	]{abntex2}
+
+\usepackage{tcc} 		% Customizacoes
+
+% Pacotes fundamentais 
+\usepackage{lmodern}			% Fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalografica
+\usepackage{indentfirst}		% Indenta o primeiro paragrafo de cada secao.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusao de graficos
+\usepackage{microtype} 			% Melhorias de justificacao
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% Citacoes padrao ABNT
+\usepackage{lipsum}				% Geracao automatica de textos de exemplo
+% ---
+	
+% Pacotes de citações
+\usepackage[brazilian,hyperpageref]{backref}	 
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% Informações de dados para CAPA e FOLHA DE ROSTO
+\titulo{\Large{Titulo Épico}}
+\autor{Autor(a) Fantástico(a)}
+\local{Cidade da instituição}
+\data{AAAA}
+
+\instituicao{Universidade Show de Bola}
+\departamento{Departamento de Pesquisas Fantásticas}
+\filiacao{Nome do meu curso super blaster}
+\orientador{Prof. Orientador(a) Inteligentão(ona)}
+
+\preambulo{Trabalho de Conclusão de Curso apresentado ao Curso de blá...blá... como requisito parcial à obtenção do título de blá...blá...}
+% ---
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Compila o índice
+\makeindex
+
+
+% Início do documento
+\begin{document}
+
+
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\pretextual
+
+\imprimircapa
+\imprimirfolhaderosto*
+
+% inserir lista de ilustrações
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% inserir lista de tabelas
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ------------------
+% ELEMENTOS TEXTUAIS
+% ------------------
+\textual
+
+\include{introducao/introducao}
+\include{fundamentacao/fundamentacao}
+\include{metodologia/metodologia}
+\include{resultados/resultados}
+\include{conclusao/conclusao}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% Referências bibliográficas
+\bibliography{referencias}
+
+\end{document}
